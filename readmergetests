@@ -1,0 +1,27 @@
+def readmerge():
+
+    global MERGEDLIST
+    #input_file1 = input("Enter 1st filename to read and merge: ")
+    #input_file2 = input("Enter 2nd filename to read and merge: ")
+
+    input_file1 = "sample-r1.txt" #DELETE BEFORE SENDING!!!!
+    input_file2 = "sample-r2.txt" #DELETE BEFORE SENDING!!!!
+
+    list_file1 = [line.strip().split() for line in open(input_file1).readlines()]
+    list_file2 = [line.strip().split() for line in open(input_file2).readlines()]
+
+    while (len(list_file1) > 0 or len(list_file2)> 0 ):
+        
+        if (len(list_file1) == 0):
+            MERGEDLIST += list_file2
+            break
+    
+        if (len(list_file2) == 0):
+            MERGEDLIST += list_file1
+            break
+        
+        if (list_file1[0][LASTNAME] < list_file2[0][LASTNAME]):
+            MERGEDLIST.append(list_file1.pop(0))
+        else:
+            MERGEDLIST.append(list_file2.pop(0))
+readmerge()
